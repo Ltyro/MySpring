@@ -1,8 +1,8 @@
 package configuration;
 
+import annotations.Bean;
+import annotations.Component;
 import entity.Board;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
 @Component
 public class MyBeans {
@@ -17,4 +17,8 @@ public class MyBeans {
         return new Board(5, 2);
     }
 
+    @Bean("board")
+    public Board myBoard1() {
+        return new Board(7, 4);
+    }
 }

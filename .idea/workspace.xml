@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f28bfdb-73b0-454d-8a95-018cb2814611" name="Default Changelist" comment="my spring">
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/config/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/src/com/thread/MyThreadPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/src/main/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PersonalPractice/src/netty/MultiClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myspring.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/configuration/MyBeans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Scanner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/configuration/MyBeans.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/utils/MyClassLoader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/utils/Scanner.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/TestMySpring.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/annotations/Bean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/annotations/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/annotations/MyInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/ClassUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Context.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/src/basic/TestString.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/src/basic/TestString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/src/kriging/Kriging.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/src/kriging/Kriging.java" afterDir="false" />
@@ -75,6 +60,18 @@
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/target/classes/netty/time/TimeServerHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/target/classes/netty/time/TimeServerHandler$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/target/classes/netty/time/TimeServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/target/classes/netty/time/TimeServerHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/target/classes/pat/Adv3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/target/classes/pat/Adv3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/configuration/MyBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/configuration/MyBeans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestMySpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMySpring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/configuration/MyBeans.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/configuration/MyBeans.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/MyClassLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/Scanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/TestMySpring.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestMySpring.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -107,42 +104,16 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/configuration/MyBeans.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="197">
+              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#276#277#0" expanded="true" />
-                <element signature="e#309#310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#254#255#0" expanded="true" />
-                <element signature="e#282#283#0" expanded="true" />
-                <element signature="e#321#322#0" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#384#385#0" expanded="true" />
-                <element signature="e#412#413#0" expanded="true" />
-                <element signature="e#451#452#0" expanded="true" />
-                <element signature="e#485#486#0" expanded="true" />
+                <element signature="e#314#315#0" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,10 +122,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/Scanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="-565">
+              <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Context.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding>
+                <element signature="e#424#425#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,8 +147,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+            <state relative-caret-position="210">
+              <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,23 +159,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestMySpring.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="60">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#71#72#0" expanded="true" />
-                <element signature="e#96#97#0" expanded="true" />
-                <element signature="e#117#118#0" expanded="true" />
-                <element signature="e#180#181#0" expanded="true" />
+                <element signature="e#99#100#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE-sources.jar!/org/springframework/stereotype/Component.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -201,6 +175,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -215,18 +191,22 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/MyClassLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/java/annotations/Component.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Context.java" />
         <option value="$PROJECT_DIR$/src/main/java/App.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestMySpring.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/MyClassLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Scanner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/ClassUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/configuration/MyBeans.java" />
+        <option value="$PROJECT_DIR$/src/main/java/annotations/Bean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Scanner.java" />
       </list>
     </option>
   </component>
@@ -252,8 +232,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,6 +258,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myspring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myspring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="annotations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myspring" type="b2602c69:ProjectViewProjectNode" />
@@ -311,7 +299,10 @@
             </path>
             <path>
               <item name="myspring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="myspring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -377,6 +368,7 @@
       <updated>1560603892809</updated>
       <workItem from="1560603899594" duration="7338000" />
       <workItem from="1560672579865" duration="5550000" />
+      <workItem from="1560689587819" duration="6289000" />
     </task>
     <task id="LOCAL-00001" summary="my spring">
       <created>1560677489074</created>
@@ -389,7 +381,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12888000" />
+    <option name="totallyTimeSpent" value="19177000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,14 +394,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.6196721" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Learn" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.20255864" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.20469083" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.23535791" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Spring" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
@@ -418,7 +411,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info anchor="bottom" id="Run" order="9" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.3383948" />
+      <window_info active="true" anchor="bottom" id="Debug" order="10" visible="true" weight="0.3383948" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.329718" />
@@ -435,6 +428,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="my spring" />
     <option name="LAST_COMMIT_MESSAGE" value="my spring" />
@@ -443,16 +462,54 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/Scanner.java</url>
-          <line>77</line>
+          <url>file://$PROJECT_DIR$/src/main/java/App.java</url>
+          <line>15</line>
           <properties />
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utils/Scanner.java</url>
+          <line>72</line>
+          <properties />
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="method.getAnnotations()" language="JAVA" />
+        <watch expression="clazz.isInterface()" language="JAVA" />
+        <watch expression="Context.getInstance()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>method.getAnnotations()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Context.getInstance()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>clazz.isAnnotation()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>clazz.isInterface()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>clazz.isAnonymousClass()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>path.replaceAll(&quot;%20&quot;,&quot; &quot;)</expression-string>
         <language-id>JAVA</language-id>
@@ -461,33 +518,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE-sources.jar!/org/springframework/stereotype/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestMySpring.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#71#72#0" expanded="true" />
-            <element signature="e#96#97#0" expanded="true" />
-            <element signature="e#117#118#0" expanded="true" />
-            <element signature="e#180#181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/ClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -520,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="259" column="20" lean-forward="true" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE-sources.jar!/org/springframework/core/OverridingClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2867">
@@ -541,56 +564,165 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/MyClassLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/MyClassLoader.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="227">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Scanner.java">
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE-sources.jar!/org/springframework/stereotype/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="193">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Board.java">
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE-sources.jar!/org/springframework/context/annotation/Bean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="210">
+          <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="217" selection-end-column="11" />
           <folding>
-            <element signature="e#254#255#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#384#385#0" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
+            <element signature="docComment;class#Bean#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/annotations/Component.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/annotations/MyInterface.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestMySpring.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#71#72#0" expanded="true" />
+            <element signature="e#99#100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="194" column="5" lean-forward="true" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
+          <folding>
+            <element signature="e#6222#6223#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8550">
+          <caret line="392" column="11" selection-start-line="392" selection-start-column="11" selection-end-line="392" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE-sources.jar!/org/springframework/util/ClassUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/ClassUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/annotations/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/annotations/Bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/annotations/MyInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/configuration/MyBeans.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="197">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-565">
+          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        <state relative-caret-position="210">
+          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
