@@ -1,8 +1,8 @@
-package configuration;
+package lnstark.configuration;
 
-import annotations.Bean;
-import annotations.Component;
-import entity.Board;
+import lnstark.annotations.Bean;
+import lnstark.annotations.Component;
+import lnstark.entity.Board;
 
 @Component
 public class MyBeans {

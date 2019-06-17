@@ -1,4 +1,4 @@
-package entity;
+package lnstark.entity;
 
 public class Board {
 

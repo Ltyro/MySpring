@@ -14,7 +14,7 @@ public class TestMySpring {
 
     public static void testForname() {
         try {
-            Class it = Class.forName("annotations.MyInterface");
+            Class it = Class.forName("lnstark.annotations.MyInterface");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
