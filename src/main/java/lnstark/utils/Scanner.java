@@ -5,6 +5,7 @@ import lnstark.annotations.Component;
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +28,16 @@ public class Scanner {
         return scanner;
     }
 
-    public void scanBeans(String basePath) {
+    public void scanBeans(String basePath, String packageName) {
 
-        scanFiles(basePath, "");
+        scanFiles(basePath, packageName);
         loadClasses();
     }
 
     public void scanFiles(String basePath, String packagePath) {
         File baseDir = new File(basePath);
         if(baseDir.isDirectory()) {
-            scanFiles(baseDir, "");
+            scanFiles(baseDir, packagePath);
         }
     }
 
@@ -76,17 +77,19 @@ public class Scanner {
 
     public void analyseClass(Class<?> clazz) {
         Annotation[] classAnnotations = clazz.getAnnotations();
+        Object instance = null;
         for (Annotation a : classAnnotations) {
             if(a instanceof Component) {
                 String aValue = ((Component) a).value();
                 String name = aValue.equals("") ? clazz.getSimpleName() : aValue;
-
-                Context.getInstance().addBean(name, newInstance(clazz));
+                instance = newInstance(clazz);
+                Context.getInstance().addBean(name, instance);
             }
 
             System.out.println(a);
         }
-
+        if(instance == null) // 如果class没有注入，则不扫描属性和方法的注解
+            return;
         Field fields[] = clazz.getDeclaredFields();
         for(Field field : fields) {
 
@@ -99,7 +102,17 @@ public class Scanner {
                 continue;
             String aValue = ((Bean) a).value();
             String name = aValue.equals("") ? method.getName() : aValue;
-            Context.getInstance().addBean(name, newInstance(method.getReturnType()));
+            Object methodReturnBean = null;
+            try {
+                methodReturnBean = method.invoke(instance);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } finally {
+                Context.getInstance().addBean(name, methodReturnBean);
+            }
+
         }
     }
 
