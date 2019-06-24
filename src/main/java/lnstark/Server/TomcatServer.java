@@ -10,16 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
-@Component
+@Component("tomcatServer")
 public class TomcatServer {
 
     public String WEBAPP_PATH = "src/main";
 
-    public static void main(String args[]) {
-        new TomcatServer().startService();
+
+
+    public void start() {
+        new Thread(() -> {
+            runService();
+        }).start();
     }
 
-    public void startService() {
+    private void runService() {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
         String tmpDirPath = System.getProperty("user.dir") + File.separator + WEBAPP_PATH;
@@ -46,5 +50,4 @@ public class TomcatServer {
         }
         tomcat.getServer().await();
     }
-
 }

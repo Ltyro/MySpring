@@ -1,5 +1,6 @@
 package lnstark.entity;
 
+
 public class Board {
 
     int wheel = 4;

@@ -1,6 +1,7 @@
 package lnstark.utils;
 
 import lnstark.App;
+import lnstark.Server.TomcatServer;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,6 +15,8 @@ public class Application {
 
     private String path = "", packageName = "";
 
+    private Context context = null;
+
     private Class clz = null;
     private Application(Class<?> clz) {
         path = clz.getResource("").getFile();
@@ -21,17 +24,23 @@ public class Application {
 
         packageName = clz.getPackage().getName();
         this.clz = clz;
+
+        context = Context.getInstance();
     }
 
     public Context run() {
-        Scanner.getInstance().scanBeans(path, packageName);
 
+        Scanner.getInstance().scanBeans(path, packageName);
+        startServer();
         log.info("--------- " + clz.getSimpleName() + " started -------------");
-        return Context.getInstance();
+
+        return context;
     }
 
     private void startServer() {
 
+        TomcatServer server = (TomcatServer) context.getBeanByName("tomcatServer");
+        server.start();
 
     }
 
