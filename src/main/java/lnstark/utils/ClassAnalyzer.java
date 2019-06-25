@@ -48,7 +48,7 @@ public class ClassAnalyzer {
                 continue;
 //            System.out.println(clazz.getName());
             // load class
-            ClassAnalyzer.getInstance().analyzeClass(clazz, context);
+            analyzeClass(clazz, context);
         }
 
         for(Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {

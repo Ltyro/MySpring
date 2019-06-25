@@ -26,10 +26,7 @@ public class Context<T> {
     }
 
     public Object getBeanByName(String name) {
-        for(Map.Entry<String, Object> entry : beans.entrySet())
-            if(entry.getKey().equals(name))
-                return entry.getValue();
-        return null;
+        return beans.get(name);
     }
 
     public List<T> getBeanByType(Class<T> clz) {
