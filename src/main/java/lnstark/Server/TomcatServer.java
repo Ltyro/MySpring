@@ -15,7 +15,9 @@ public class TomcatServer {
 
     public String WEBAPP_PATH = "src/main";
 
+    private int port = 8080;
 
+    private String contextPath = "defaultPath";
 
     public void start() {
         new Thread(() -> {
@@ -25,29 +27,48 @@ public class TomcatServer {
 
     private void runService() {
         Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
+        tomcat.setPort(port);
         String tmpDirPath = System.getProperty("user.dir") + File.separator + WEBAPP_PATH;
-        org.apache.catalina.Context ctxt = tomcat.addContext("/sqrt", tmpDirPath);
+        org.apache.catalina.Context ctxt = tomcat.addContext(contextPath, tmpDirPath);
 
-        Tomcat.addServlet(ctxt, "servletTest", new HttpServlet() {
+//        Tomcat.addServlet(ctxt, "servlet", new HttpServlet() {
+//
+//            protected void doGet(HttpServletRequest request,
+//                                 HttpServletResponse response) throws IOException {
+//
+//                Double input = Double.parseDouble(request.getParameter("number"));
+//                double result = Math.sqrt(input);
+//                String message = "The result is " + result;
+//                response.getOutputStream().write(message.getBytes());
+//
+//            }
+//
+//        });
 
-            protected void doGet(HttpServletRequest request,
-                                 HttpServletResponse response) throws IOException {
+        Tomcat.addServlet(ctxt, "servlet", new DispatcherServlet());
 
-                Double input = Double.parseDouble(request.getParameter("number"));
-                double result = Math.sqrt(input);
-                String message = "The result is " + result;
-                response.getOutputStream().write(message.getBytes());
-
-            }
-        });
-
-        ctxt.addServletMappingDecoded("/", "servletTest");
+        ctxt.addServletMappingDecoded("/", "servlet");
         try {
             tomcat.start();
         } catch (LifecycleException e) {
             e.printStackTrace();
         }
         tomcat.getServer().await();
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getContextPath() {
+        return contextPath;
+    }
+
+    public void setContextPath(String contextPath) {
+        this.contextPath = contextPath;
     }
 }

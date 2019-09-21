@@ -1,12 +1,12 @@
 package lnstark.utils;
 
-import lnstark.App;
 import lnstark.Server.TomcatServer;
-import org.apache.catalina.startup.Tomcat;
+import lnstark.entity.Configuration;
+import lnstark.utils.context.Context;
+import lnstark.utils.context.ContextAware;
+import lnstark.utils.context.DefaultContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import java.io.File;
 
 
 public class Application {
@@ -18,14 +18,20 @@ public class Application {
     private Context context = null;
 
     private Class clz = null;
+
+    private Configuration config;
+
     private Application(Class<?> clz) {
+        // 扫描包的路径
         path = clz.getResource("").getFile();
         path = path.replaceAll("%20"," ");// 替换空格
+        config = new ConfigurationResolver();
 
         packageName = clz.getPackage().getName();
         this.clz = clz;
 
-        context = Context.getInstance();
+        context = new DefaultContext();
+        ContextAware.setContext(context);
     }
 
     public Context run() {
@@ -40,6 +46,8 @@ public class Application {
     private void startServer() {
 
         TomcatServer server = (TomcatServer) context.getBeanByName("tomcatServer");
+        server.setContextPath(config.getServletPath());
+        server.setPort(config.getPort());
         server.start();
 
     }

@@ -1,23 +1,17 @@
-package lnstark.utils;
+package lnstark.utils.context;
+
+import lnstark.utils.ConfigurationResolver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Context<T> {
+public abstract class AbstractContext<T> implements Context<T> {
+
     private Map<String, Object> beans;
 
-    private static Context context = null;
-
-    public static Context getInstance() {
-        if(context == null) {
-            context = new Context();
-        }
-        return context;
-    }
-
-    private Context() {
+    public AbstractContext() {
         beans = new HashMap();
     }
 
@@ -36,4 +30,5 @@ public class Context<T> {
                 result.add((T) o);
         return result;
     }
+
 }

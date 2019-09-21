@@ -1,16 +1,16 @@
 package lnstark.Controller;
 
 import lnstark.annotations.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lnstark.annotations.Controller;
+import lnstark.annotations.RequestMapping;
 
-@Controller
+@Controller("lbwnb")
 public class MyController {
 
     @Autowired
     Object a;
 
-    @RequestMapping
+    @RequestMapping({"pps/oos", "ps/os"})
     public String hello() {
         return "hello, flyer";
     }

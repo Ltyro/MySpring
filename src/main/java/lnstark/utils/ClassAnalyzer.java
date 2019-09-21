@@ -1,8 +1,13 @@
 package lnstark.utils;
 
+import lnstark.Server.MethodMappingResolver;
 import lnstark.annotations.Bean;
 import lnstark.annotations.Component;
+import lnstark.annotations.Controller;
 import lnstark.dataStructure.MapList;
+import lnstark.utils.context.Context;
+import lnstark.utils.context.ContextAware;
+import lnstark.utils.context.DefaultContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -19,7 +24,7 @@ public class ClassAnalyzer {
 
     private ClassLoader loader = this.getClass().getClassLoader();
 
-    private Context context = Context.getInstance();;
+    private Context context;
 
     private MapList<Class<?>, Object> clzInstanceMap = new MapList();
 
@@ -30,7 +35,9 @@ public class ClassAnalyzer {
             analyzer = new ClassAnalyzer();
         return analyzer;
     }
-
+    private ClassAnalyzer() {
+        context = ContextAware.getContext();
+    }
     /**
      * 根据名字加载类
      * @param classNames
@@ -71,6 +78,13 @@ public class ClassAnalyzer {
             if(a instanceof Component) {
                 String aValue = ((Component) a).value();
                 String name = aValue.equals("") ? firstLetterToLower(clazz.getSimpleName()) : aValue;
+                instance = newInstance(clazz);
+                clzInstanceMap.add(clazz, instance);
+                context.addBean(name, instance);
+            } else if (a instanceof Controller) {
+                String aValue = ((Controller) a).value();
+                String name = firstLetterToLower(clazz.getSimpleName());
+                MethodMappingResolver.getInstance().resolveController(clazz, aValue);// 解析controller方法
                 instance = newInstance(clazz);
                 clzInstanceMap.add(clazz, instance);
                 context.addBean(name, instance);

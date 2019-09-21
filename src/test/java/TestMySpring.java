@@ -13,10 +13,6 @@ public class TestMySpring {
     public static void testClass() { out.println("ff".getClass() == "fs".getClass()); }
 
     public static void testForname() {
-        try {
-            Class it = Class.forName("lnstark.annotations.MyInterface");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
 }
