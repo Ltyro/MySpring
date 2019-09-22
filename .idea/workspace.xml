@@ -4,19 +4,7 @@
     <list default="true" id="3f28bfdb-73b0-454d-8a95-018cb2814611" name="Default Changelist" comment="my spring">
       <change afterPath="$PROJECT_DIR$/../PersonalPractice/src/dataStructure/MyArrayList.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PersonalPractice/src/dataStructure/MyHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/annotations/RequestMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/entity/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/entity/MethodWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/exception/RequestMappingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/ConfigurationResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/AbstractContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/WebContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/web/WebUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestWhatever.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lnstark/exception/ContextException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/src/basic/TestString.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PersonalPractice/src/basic/TestString.java" afterDir="false" />
@@ -140,20 +128,23 @@
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../PersonalPractice/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/configuration/MyBeans.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Board.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/Server/TomcatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/Server/TomcatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/utils/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/utils/ClassAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/ClassAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/utils/Context.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/entity/MethodWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/entity/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Scanner.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestMySpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMySpring.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/App.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/configuration/MyBeans.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/MyClassLoader.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/Scanner.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/TestMySpring.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestMySpring.class" afterDir="false" />
     </list>
@@ -191,34 +182,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/ConfigurationResolver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="315">
+              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-webmvc/5.1.7.RELEASE/spring-webmvc-5.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="480" column="21" lean-forward="true" selection-start-line="480" selection-start-column="21" selection-end-line="480" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -226,8 +196,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+            <state>
+              <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+              <folding>
+                <element signature="e#1517#1518#0" expanded="true" />
+                <element signature="e#1553#1554#0" expanded="true" />
+                <element signature="e#1632#1633#0" expanded="true" />
+                <element signature="e#1668#1669#0" expanded="true" />
+                <element signature="e#1749#1750#0" expanded="true" />
+                <element signature="e#1785#1786#0" expanded="true" />
+                <element signature="e#1863#1864#0" expanded="true" />
+                <element signature="e#1899#1900#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -235,8 +215,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="115">
+              <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#460#461#0" expanded="true" />
+                <element signature="e#500#501#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1260">
+              <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -245,12 +239,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/entity/RequestHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-87">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="284">
+              <caret line="78" column="8" lean-forward="true" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3462#3463#0" expanded="true" />
+                <element signature="e#3491#3492#0" expanded="true" />
+                <element signature="e#3535#3536#0" expanded="true" />
+                <element signature="e#3571#3572#0" expanded="true" />
+                <element signature="e#3620#3621#0" expanded="true" />
+                <element signature="e#3657#3658#0" expanded="true" />
+                <element signature="e#3725#3726#0" expanded="true" />
+                <element signature="e#3777#3778#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/exception/RequestMappingException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <element signature="e#131#132#0" expanded="true" />
+                <element signature="e#155#156#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -260,7 +275,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/HelloController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -271,8 +286,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="175">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/AbstractContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#312#313#0" expanded="true" />
+                <element signature="e#349#350#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -337,7 +366,6 @@
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/application/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/application/WebApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/context/Context.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/context/DefaultContext.java" />
@@ -349,15 +377,19 @@
         <option value="$PROJECT_DIR$/src/main/java/lnstark/Server/TomcatServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/ClassAnalyzer.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/annotations/RequestMapping.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/entity/MethodWrapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lnstark/Controller/HelloController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lnstark/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/exception/RequestException.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/exception/RequestMappingException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/web/WebUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/exception/ContextException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/Controller/HelloController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/lnstark/entity/RequestHandler.java" />
       </list>
     </option>
   </component>
@@ -404,8 +436,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -464,7 +494,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lnstark" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myspring" type="b2602c69:ProjectViewProjectNode" />
@@ -473,7 +503,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lnstark" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myspring" type="b2602c69:ProjectViewProjectNode" />
@@ -512,6 +542,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -524,10 +556,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="1+1" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -541,7 +579,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MethodMappingResolver">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lnstark.App" />
       <module name="myspring" />
@@ -597,8 +635,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MethodMappingResolver" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.MethodMappingResolver" />
         <item itemvalue="Application.ConfigurationResolver" />
         <item itemvalue="Application.WebContext" />
         <item itemvalue="Application.TestWhatever" />
@@ -638,6 +676,8 @@
       <workItem from="1568811827779" duration="6661000" />
       <workItem from="1568904812553" duration="1681000" />
       <workItem from="1568988006416" duration="5163000" />
+      <workItem from="1569051193251" duration="9207000" />
+      <workItem from="1569146154527" duration="3524000" />
     </task>
     <task id="LOCAL-00001" summary="my spring">
       <created>1560677489074</created>
@@ -660,11 +700,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561473398241</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="controller注册">
+      <created>1569051300811</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569051300811</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81856000" />
+    <option name="totallyTimeSpent" value="94587000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -683,10 +730,10 @@
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Learn" order="3" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.16950959" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.17270789" />
       <window_info id="Web" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49626866" weight="0.21583514" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49626866" weight="0.19739696" />
       <window_info anchor="bottom" id="Messages" order="2" sideWeight="0.49733475" weight="0.329718" />
       <window_info anchor="bottom" id="Spring" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49946696" weight="0.20173536" />
@@ -695,12 +742,11 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.4989339" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.6385928" weight="0.329718" />
-      <window_info anchor="bottom" id="Debug" order="10" sideWeight="0.64179105" weight="0.28091106" />
+      <window_info active="true" anchor="bottom" id="Debug" order="10" sideWeight="0.64179105" visible="true" weight="0.36225596" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.329718" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.34381664" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Maven" order="2" weight="0.18550107" />
@@ -710,16 +756,17 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="right" id="Structure" order="7" sideWeight="0.6196721" type="SLIDING" weight="0.25" />
       <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.34381664" />
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" sideWeight="0.6196721" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Learn" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.16950959" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.38032788" visible="true" weight="0.17110874" />
       <window_info id="Web" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49626866" weight="0.21583514" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49626866" weight="0.19739696" />
       <window_info anchor="bottom" id="Messages" order="2" sideWeight="0.49733475" weight="0.329718" />
       <window_info anchor="bottom" id="Spring" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49946696" weight="0.20173536" />
@@ -728,7 +775,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.4989339" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.6385928" weight="0.329718" />
-      <window_info anchor="bottom" id="Debug" order="10" sideWeight="0.64179105" weight="0.3329718" />
+      <window_info anchor="bottom" id="Debug" order="10" sideWeight="0.64179105" visible="true" weight="0.3383948" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.329718" />
@@ -742,6 +789,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="right" id="Structure" order="7" sideWeight="0.6196721" type="SLIDING" weight="0.25" />
       <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.34381664" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,22 +839,19 @@
     <MESSAGE value="my spring" />
     <MESSAGE value="完善scanner" />
     <MESSAGE value="analyzer little changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="analyzer little changes" />
+    <MESSAGE value="controller注册" />
+    <option name="LAST_COMMIT_MESSAGE" value="controller注册" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java</url>
-          <line>16</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="RequestMethod.GET.name()" language="JAVA" />
+        <watch expression="params[0].toString()" language="JAVA" custom="org.springframework.web.bind.annotation.RequestMethod" />
+        <watch expression="params[0].getName()" language="JAVA" />
+        <watch expression="method.getGenericParameterTypes()" language="JAVA" />
+        <watch expression="method.getDeclaringClass()" language="JAVA" />
+        <watch expression="method.getClass()" language="JAVA" />
+        <watch expression="method.getGenericParameterTypes()[0].getTypeName()" language="JAVA" />
+        <watch expression="paramType == int.class" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -818,96 +863,55 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>RequestMethod.GET.name()</expression-string>
+        <expression-string>paramType == int.class</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>RequestMethod.GET.getClass().getSimpleName()</expression-string>
+        <expression-string>paramType</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>RequestMethod.GET.getClass().getName()</expression-string>
+        <expression-string>method.getGenericParameterTypes()[0].getTypeName()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>req.getParameterNames()</expression-string>
+        <expression-string>method.getGenericParameterTypes()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>req.getParts()</expression-string>
+        <expression-string>params[0].getName()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>req.getParameterMap()</expression-string>
+        <expression-string>params[0].toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.springframework.web.bind.annotation.RequestMethod</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>params[0].getName()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.springframework.web.bind.annotation.RequestMethod</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>method.getDeclaringClass()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>req.getQueryString()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>req.getMethod()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>req.getServletPath()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>req.getContextPath()</expression-string>
+        <expression-string>method.getClass()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-webmvc/5.1.7.RELEASE/spring-webmvc-5.1.7.RELEASE.jar!/org/springframework/web/servlet/mvc/method/RequestMappingInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="135" column="51" lean-forward="true" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-webmvc/5.1.7.RELEASE/spring-webmvc-5.1.7.RELEASE.jar!/org/springframework/web/servlet/handler/AbstractHandlerMethodMapping.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="328" column="47" lean-forward="true" selection-start-line="328" selection-start-column="47" selection-end-line="328" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestWhatever.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="210" column="12" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-maven-3.6.0/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.42/tomcat-embed-core-8.5.42.jar!/javax/servlet/Servlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/apache-maven-3.6.0/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.42/tomcat-embed-core-8.5.42.jar!/javax/servlet/GenericServlet.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1017,46 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/WebContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/web/WebUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/AbstractContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/DefaultContext.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,13 +1050,6 @@
             <element signature="e#2036#2037#0" expanded="true" />
             <element signature="e#2063#2064#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/annotations/RequestMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1127,23 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/entity/MethodWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE-sources.jar!/org/springframework/core/annotation/AliasFor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -1155,50 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-webmvc/5.1.7.RELEASE/spring-webmvc-5.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="480" column="21" lean-forward="true" selection-start-line="480" selection-start-column="21" selection-end-line="480" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/HelloController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/ConfigurationResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1216,27 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="621" column="15" selection-start-line="621" selection-start-column="15" selection-end-line="621" selection-end-column="15" />
-          <folding>
-            <element signature="e#22786#22787#0" expanded="true" />
-            <element signature="e#22821#22822#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1244,23 +1123,207 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/exception/RequestMappingException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/RequestHandler.java" />
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/springframework/spring-webmvc/5.1.7.RELEASE/spring-webmvc-5.1.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="627" column="23" selection-start-line="627" selection-start-column="23" selection-end-line="627" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.42/tomcat-embed-core-8.5.42.jar!/javax/servlet/ServletResponse.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/annotations/RequestMapping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/WebContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/web/WebUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="224" column="20" selection-start-line="224" selection-start-column="20" selection-end-line="224" selection-end-column="20" />
+          <folding>
+            <element signature="e#7076#7077#0" expanded="true" />
+            <element signature="e#7109#7110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/exception/ContextException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
-            <element signature="e#131#132#0" expanded="true" />
-            <element signature="e#154#155#0" expanded="true" />
+            <element signature="e#115#116#0" expanded="true" />
+            <element signature="e#138#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/ConfigurationResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/MethodMappingResolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="1260">
+          <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/exception/RequestMappingException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="e#131#132#0" expanded="true" />
+            <element signature="e#155#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/HelloController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/ContextAware.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/utils/context/AbstractContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Server/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1553#1554#0" expanded="true" />
+            <element signature="e#1632#1633#0" expanded="true" />
+            <element signature="e#1668#1669#0" expanded="true" />
+            <element signature="e#1749#1750#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1899#1900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/Controller/MyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/apache-maven-3.6.0/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.42/tomcat-embed-core-8.5.42.jar!/javax/servlet/ServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="2885" column="18" selection-start-line="2885" selection-start-column="18" selection-end-line="2885" selection-end-column="18" />
+          <folding>
+            <element signature="e#22786#22787#0" expanded="true" />
+            <element signature="e#22821#22822#0" expanded="true" />
+            <element signature="e#113343#113344#0" expanded="true" />
+            <element signature="e#113370#113371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lnstark/entity/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="78" column="8" lean-forward="true" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3462#3463#0" expanded="true" />
+            <element signature="e#3491#3492#0" expanded="true" />
+            <element signature="e#3535#3536#0" expanded="true" />
+            <element signature="e#3571#3572#0" expanded="true" />
+            <element signature="e#3620#3621#0" expanded="true" />
+            <element signature="e#3657#3658#0" expanded="true" />
+            <element signature="e#3725#3726#0" expanded="true" />
+            <element signature="e#3777#3778#0" expanded="true" />
           </folding>
         </state>
       </provider>

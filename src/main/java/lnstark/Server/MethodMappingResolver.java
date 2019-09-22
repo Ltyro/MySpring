@@ -1,11 +1,12 @@
 package lnstark.Server;
 
 import lnstark.annotations.RequestMapping;
-import lnstark.entity.MethodWrapper;
+import lnstark.entity.RequestHandler;
 import lnstark.exception.RequestMappingException;
 import lnstark.utils.Constants;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class MethodMappingResolver {
 
     private static MethodMappingResolver mmResolver;
 
-    private Map<String, MethodWrapper> servletPath2Method;
+    private Map<String, RequestHandler> servletPath2Method;
 
     private MethodMappingResolver() {
         servletPath2Method = new HashMap();
@@ -43,16 +44,15 @@ public class MethodMappingResolver {
                 if (!(a instanceof RequestMapping))
                     continue;
                 RequestMapping rma = (RequestMapping) a;
-                RequestMethod[] rms = rma.method();
-                String rmaValues[] = rma.value();
-                MethodWrapper mw = new MethodWrapper(method, rma);
+                String rmaValues[] = rma.value();// 方法注解上的路径
+                RequestHandler mw = new RequestHandler(method, rma);
 
                 Set<String> pathSet = new HashSet();
                 for (String s : rmaValues)
                     pathSet.add(s);
 
                 for (String p : pathSet) {
-                    String path = cPath + Constants.PATH_SEPERATOR + handlePath(p);
+                    String path = Constants.PATH_SEPERATOR + cPath + Constants.PATH_SEPERATOR + handlePath(p);
                     if (servletPath2Method.containsKey(path))
                         throw new RequestMappingException("路径“" + path + "”重复!");
                     servletPath2Method.put(path, mw);
@@ -87,8 +87,25 @@ public class MethodMappingResolver {
 
     }
 
+    public RequestHandler getHandler(HttpServletRequest req) throws RequestMappingException {
+        String servletPath = req.getServletPath();
+        // url过滤
+        if (!servletPath2Method.containsKey(servletPath)) {
+            throw new RequestMappingException("404 找不到路径");
+        }
+        RequestHandler handler = servletPath2Method.get(servletPath);
+        RequestMapping rma = handler.getRequestMapping();
+        RequestMethod[] methods = rma.method();
+        // 请求方式过滤
+        if(!matchMethod(methods, req.getMethod())) {
+            throw new RequestMappingException("请求方式“" + req.getMethod() + "”不被允许");
+        }
+        return handler;
+    }
+
     public static void main(String[] args) {
 //        MethodMappingResolver mmr = new MethodMappingResolver();
 //        System.out.println(mmr.handlePath("\\sdasf/\\/"));
     }
+
 }

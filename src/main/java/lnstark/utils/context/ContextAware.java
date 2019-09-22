@@ -1,5 +1,8 @@
 package lnstark.utils.context;
 
+/**
+ * 获取上下文
+ */
 public class ContextAware {
     private static Context context = null;
 
