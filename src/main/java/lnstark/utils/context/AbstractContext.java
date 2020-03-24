@@ -25,8 +25,8 @@ public abstract class AbstractContext<T> implements Context<T> {
 
     public List<T> getBeanByType(Class<T> clz) {
         List<T> result = new ArrayList<T>();
-        for(Object o : beans.values())
-            if(o.getClass() == clz)
+        for (Object o : beans.values())
+            if (o.getClass() == clz)
                 result.add((T) o);
         return result;
     }

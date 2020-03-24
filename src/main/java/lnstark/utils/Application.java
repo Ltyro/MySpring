@@ -24,7 +24,7 @@ public class Application {
     private Application(Class<?> clz) {
         // 扫描包的路径
         path = clz.getResource("").getFile();
-        path = path.replaceAll("%20"," ");// 替换空格
+        path = path.replaceAll("%20", " ");// 替换空格
         config = new ConfigurationResolver();
 
         packageName = clz.getPackage().getName();

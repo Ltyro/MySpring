@@ -39,9 +39,9 @@ public class MapList<K, V> implements Map<K, List<V>>, Cloneable, Serializable {
 
     @Override
     public boolean containsValue(Object value) {
-        for(List<V> l : map.values())
-            for(V v : l)
-                if(value.equals(v))
+        for (List<V> l : map.values())
+            for (V v : l)
+                if (value.equals(v))
                     return true;
 
         return false;

@@ -27,7 +27,7 @@ public class DispatcherServlet extends HttpServlet {
             res.setContentType("text/html;charset=utf-8");
             writer = res.getWriter();   // 这步要在setContentType之后，否则无效
             RequestHandler handler = MethodMappingResolver.getInstance().getHandler(req);
-            if(handler == null)
+            if (handler == null)
                 log.error("找不到相应的处理方法");
             String msg = handler.handle(req);
             writer.write(msg);
@@ -36,8 +36,6 @@ public class DispatcherServlet extends HttpServlet {
             writer.write(e.getMessage());
         }
     }
-
-
 
 
     public void doService(HttpServletRequest req, HttpServletResponse res) {

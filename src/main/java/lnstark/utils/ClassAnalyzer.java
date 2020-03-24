@@ -31,36 +31,39 @@ public class ClassAnalyzer {
     private Log log = LogFactory.getLog(ClassAnalyzer.class);
 
     public static ClassAnalyzer getInstance() {
-        if(analyzer == null)
+        if (analyzer == null)
             analyzer = new ClassAnalyzer();
         return analyzer;
     }
+
     private ClassAnalyzer() {
         context = ContextAware.getContext();
     }
+
     /**
      * 根据名字加载类
+     *
      * @param classNames
      */
     public void loadClasses(List<String> classNames) {
         Class<?> clazz = null;
         // 先加载所有类，再逐个解析类的属性和方法
-        for(String className : classNames) {
+        for (String className : classNames) {
             try {
                 clazz = loader.loadClass(className);// 默认初始化
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            if(clazz == null || clazz.isInterface() || clazz.isAnnotation())
+            if (clazz == null || clazz.isInterface() || clazz.isAnnotation())
                 continue;
 //            System.out.println(clazz.getName());
             // load class
             analyzeClass(clazz, context);
         }
 
-        for(Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {
+        for (Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {
             Class clz = entry.getKey();
-            for(Object o : entry.getValue()) {
+            for (Object o : entry.getValue()) {
                 analyzeFieldMethod(clz, o);
             }
         }
@@ -68,6 +71,7 @@ public class ClassAnalyzer {
 
     /**
      * 类解析
+     *
      * @param clazz
      * @param ctx
      */
@@ -75,7 +79,7 @@ public class ClassAnalyzer {
         Annotation[] classAnnotations = clazz.getAnnotations();
         Object instance = null;
         for (Annotation a : classAnnotations) {
-            if(a instanceof Component) {
+            if (a instanceof Component) {
                 String aValue = ((Component) a).value();
                 String name = aValue.equals("") ? firstLetterToLower(clazz.getSimpleName()) : aValue;
                 instance = newInstance(clazz);
@@ -97,6 +101,7 @@ public class ClassAnalyzer {
 
     /**
      * 成员变量和方法解析
+     *
      * @param clazz
      * @param instance
      */
@@ -110,7 +115,7 @@ public class ClassAnalyzer {
      */
     public void analyzeField(Class<?> clazz, Object instance) {
         Field fields[] = clazz.getDeclaredFields();
-        for(Field field : fields) {
+        for (Field field : fields) {
 
         }
     }
@@ -120,9 +125,9 @@ public class ClassAnalyzer {
      */
     public void analyzeMethod(Class<?> clazz, Object instance) {
         Method methods[] = clazz.getDeclaredMethods();
-        for(Method method : methods) {
+        for (Method method : methods) {
             Annotation a = method.getAnnotation(Bean.class);
-            if(!(a instanceof Bean))
+            if (!(a instanceof Bean))
                 continue;
             String aValue = ((Bean) a).value();
             String name = aValue.equals("") ? method.getName() : aValue;
@@ -155,7 +160,7 @@ public class ClassAnalyzer {
      * 首字母转小写
      */
     private static String firstLetterToLower(String s) {
-        if(Character.isLowerCase(s.charAt(0)))
+        if (Character.isLowerCase(s.charAt(0)))
             return s;
         else
             return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();

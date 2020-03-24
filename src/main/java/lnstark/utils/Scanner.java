@@ -1,4 +1,5 @@
 package lnstark.utils;
+
 import lnstark.annotations.Bean;
 import lnstark.annotations.Component;
 
@@ -20,9 +21,8 @@ public class Scanner {
     private List<String> classNames = new ArrayList();
 
 
-
     public static Scanner getInstance() {
-        if(scanner == null) {
+        if (scanner == null) {
             scanner = new Scanner();
         }
         return scanner;
@@ -41,29 +41,28 @@ public class Scanner {
 
     public void scanFiles(String basePath, String packagePath) {
         File baseDir = new File(basePath);
-        if(baseDir.isDirectory()) {
+        if (baseDir.isDirectory()) {
             scanFiles(baseDir, packagePath);
         }
     }
 
     public void scanFiles(File baseDir, String packagePath) {
         // handle file
-        if(baseDir.isFile()) {
+        if (baseDir.isFile()) {
             String fileName = baseDir.getName();
-            if(fileName.endsWith(".class")) {
+            if (fileName.endsWith(".class")) {
                 String fullClassName = packagePath.replace(".class", "");
                 classNames.add(fullClassName);
             }
-        } else if(baseDir.isDirectory()) {// recur sub files
+        } else if (baseDir.isDirectory()) {// recur sub files
             File[] subfiles = baseDir.listFiles();
-            if(!packagePath.equals(""))
+            if (!packagePath.equals(""))
                 packagePath += ".";
             for (File file : subfiles) {
                 scanFiles(file, packagePath + file.getName());
             }
         }
     }
-
 
 
 }

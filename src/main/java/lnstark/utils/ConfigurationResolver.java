@@ -29,7 +29,7 @@ public class ConfigurationResolver extends Configuration {
         String resourcePath = prjPath + "\\src\\main\\resources";
         File rscFolder = new File(resourcePath);
         File[] resources = rscFolder.listFiles((file) -> file.getName().endsWith(".yml"));
-        if(resources.length == 0) {
+        if (resources.length == 0) {
             log.error("configuration file not found");
             return;
         }
@@ -58,7 +58,7 @@ public class ConfigurationResolver extends Configuration {
     }
 
     public Object getValue(String key) {
-        if(key == null || key.isEmpty())
+        if (key == null || key.isEmpty())
             return null;
         String keys[] = key.split("\\.");
         String keyTemp;
@@ -68,7 +68,7 @@ public class ConfigurationResolver extends Configuration {
             if (i == keys.length - 1)
                 return map.get(keyTemp);
             map = (Map) map.get(keyTemp);
-            if(map == null) {
+            if (map == null) {
                 log.error("propertie not found!");
                 return null;
             }
