@@ -1,14 +1,17 @@
 package lnstark.Server;
 
 import lnstark.annotations.Component;
+import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
+import javax.servlet.Servlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 @Component("tomcatServer")
 public class TomcatServer {
@@ -17,7 +20,7 @@ public class TomcatServer {
 
     private int port = 8080;
 
-    private String contextPath = "defaultPath";
+    private String contextPath = "/defaultPath";
 
     public void start() {
         new Thread(() -> {
@@ -25,7 +28,12 @@ public class TomcatServer {
         }).start();
     }
 
-    private void runService() {
+    public static void main(String[] args) {
+//        System.out.println("h");
+        new TomcatServer().runService();
+    }
+
+    public void runService() {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
         String tmpDirPath = System.getProperty("user.dir") + File.separator + WEBAPP_PATH;
