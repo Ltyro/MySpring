@@ -1,9 +1,6 @@
 package lnstark.utils.context;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class AbstractContext<T> implements Context<T> {
 
@@ -39,5 +36,10 @@ public abstract class AbstractContext<T> implements Context<T> {
     		classes.add(o.getClass());
     	}
     	return classes;
+    }
+
+    @Override
+    public Set<String> getNameSet() {
+        return beans.keySet();
     }
 }

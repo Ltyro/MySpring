@@ -1,6 +1,7 @@
 package lnstark.utils.context;
 
 import java.util.List;
+import java.util.Set;
 
 public interface Context<T> {
     List<T> getBeanByType(Class<T> clz);
@@ -12,5 +13,7 @@ public interface Context<T> {
     List<Object> getAll();
     
     List<Class<?>> getAllClass();
+
+    Set<String> getNameSet();
 
 }
