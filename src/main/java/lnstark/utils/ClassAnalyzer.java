@@ -62,7 +62,7 @@ public class ClassAnalyzer extends Analyzer {
         }
         
         // 解析aop
-        AopAnalyzer aopAnalyzer = (AopAnalyzer) AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
+        AopAnalyzer aopAnalyzer = AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
         aopAnalyzer.analyze();
         
         for (Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {

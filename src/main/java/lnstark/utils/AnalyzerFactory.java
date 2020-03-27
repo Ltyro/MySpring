@@ -9,7 +9,7 @@ public class AnalyzerFactory {
 	// class to single instance map
 	private static Map<Class, Analyzer> m = new HashMap<>();
 		
-	public static Analyzer getAnalyzer(Class<?> c) {
+	public static <A extends Analyzer> A getAnalyzer(Class<A> c) {
 		Analyzer a = m.get(c);
 		if(a == null) {
 			try {
@@ -20,7 +20,7 @@ public class AnalyzerFactory {
 				e.printStackTrace();
 			}
 		}
-		return a;
+		return (A) a;
 	}
 	
 }

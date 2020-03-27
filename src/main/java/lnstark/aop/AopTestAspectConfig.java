@@ -2,7 +2,8 @@ package lnstark.aop;
 
 
 import java.lang.reflect.Method;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import lnstark.annotations.Component;
 import lnstark.aop.anno.AfterReturning;
@@ -29,4 +30,11 @@ public class AopTestAspectConfig {
 		
 	}
 	
+	public static void main(String[] args) {
+		String str = "@annotation(lnstark.aop.AopTestAnno)";
+		Matcher m = Pattern.compile("(?<=\\()(\\S+)(?=\\))").matcher(str);
+		if(m.find()) {
+			System.out.println(m.group());
+		}
+	}
 }
