@@ -8,5 +8,9 @@ public interface Context<T> {
     Object getBeanByName(String name);
 
     void addBean(String name, Object o);
+    
+    List<Object> getAll();
+    
+    List<Class<?>> getAllClass();
 
 }

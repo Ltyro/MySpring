@@ -1,7 +1,5 @@
 package lnstark.utils.context;
 
-import lnstark.utils.ConfigurationResolver;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +10,7 @@ public abstract class AbstractContext<T> implements Context<T> {
     private Map<String, Object> beans;
 
     public AbstractContext() {
-        beans = new HashMap();
+        beans = new HashMap<>();
     }
 
     public void addBean(String name, Object o) {
@@ -30,5 +28,16 @@ public abstract class AbstractContext<T> implements Context<T> {
                 result.add((T) o);
         return result;
     }
+    
+    public List<Object> getAll() {
+    	return new ArrayList<>(beans.values());
+    }
 
+    public List<Class<?>> getAllClass() {
+    	List<Class<?>> classes = new ArrayList<>();
+    	for(Object o : beans.values()) {
+    		classes.add(o.getClass());
+    	}
+    	return classes;
+    }
 }

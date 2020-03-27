@@ -4,6 +4,7 @@ import lnstark.Server.MethodMappingResolver;
 import lnstark.annotations.Bean;
 import lnstark.annotations.Component;
 import lnstark.annotations.Controller;
+import lnstark.aop.AopAnalyzer;
 import lnstark.dataStructure.MapList;
 import lnstark.utils.context.Context;
 import lnstark.utils.context.ContextAware;
@@ -18,26 +19,25 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
-public class ClassAnalyzer {
+public class ClassAnalyzer extends Analyzer {
 
-    private static ClassAnalyzer analyzer = null;
+//    private static ClassAnalyzer analyzer = null;
 
     private ClassLoader loader = this.getClass().getClassLoader();
+    
 
-    private Context context;
-
-    private MapList<Class<?>, Object> clzInstanceMap = new MapList();
+    private MapList<Class<?>, Object> clzInstanceMap = new MapList<>();
 
     private Log log = LogFactory.getLog(ClassAnalyzer.class);
 
-    public static ClassAnalyzer getInstance() {
-        if (analyzer == null)
-            analyzer = new ClassAnalyzer();
-        return analyzer;
-    }
+//    public static ClassAnalyzer getInstance() {
+//        if (analyzer == null)
+//            analyzer = new ClassAnalyzer();
+//        return analyzer;
+//    }
 
-    private ClassAnalyzer() {
-        context = ContextAware.getContext();
+    public ClassAnalyzer() {
+        super();
     }
 
     /**
@@ -58,9 +58,13 @@ public class ClassAnalyzer {
                 continue;
 //            System.out.println(clazz.getName());
             // load class
-            analyzeClass(clazz, context);
+            analyzeClass(clazz);
         }
-
+        
+        // 解析aop
+        AopAnalyzer aopAnalyzer = (AopAnalyzer) AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
+        aopAnalyzer.analyze();
+        
         for (Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {
             Class clz = entry.getKey();
             for (Object o : entry.getValue()) {
@@ -75,7 +79,7 @@ public class ClassAnalyzer {
      * @param clazz
      * @param ctx
      */
-    public void analyzeClass(Class<?> clazz, Context ctx) {
+    public void analyzeClass(Class<?> clazz) {
         Annotation[] classAnnotations = clazz.getAnnotations();
         Object instance = null;
         for (Annotation a : classAnnotations) {
@@ -116,7 +120,7 @@ public class ClassAnalyzer {
     public void analyzeField(Class<?> clazz, Object instance) {
         Field fields[] = clazz.getDeclaredFields();
         for (Field field : fields) {
-
+        	// TODO
         }
     }
 

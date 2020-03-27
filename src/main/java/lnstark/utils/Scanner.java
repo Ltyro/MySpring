@@ -35,7 +35,7 @@ public class Scanner {
     public void scanBeans(String basePath, String packageName) {
 
         scanFiles(basePath, packageName);
-        ClassAnalyzer.getInstance().loadClasses(classNames);
+        ((ClassAnalyzer)AnalyzerFactory.getAnalyzer(ClassAnalyzer.class)).loadClasses(classNames);
 
     }
 

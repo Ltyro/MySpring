@@ -4,6 +4,7 @@ import lnstark.annotations.Autowired;
 import lnstark.annotations.Controller;
 import lnstark.annotations.RequestMapping;
 import lnstark.annotations.RequestParam;
+import lnstark.aop.AopTestAnno;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ public class MyController {
     Object a;
 
     @RequestMapping(value = {"pps/oos", "ps/os"})
+    @AopTestAnno("hiahiahia")
     public String hello(HttpServletRequest request,
                         @RequestParam("s") String p1,
                         @RequestParam("d") int p2) {

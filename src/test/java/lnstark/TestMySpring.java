@@ -1,3 +1,4 @@
+package lnstark;
 import static java.lang.Class.forName;
 import static java.lang.System.out;
 
