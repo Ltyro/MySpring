@@ -33,10 +33,10 @@ public class MethodMappingResolver {
      * resolve controller
      *
      * @param clz   controller类
-     * @param cPath controller path
+     * @param cValue controller name
      */
-    public void resolveController(Class clz, String cPath) {
-        cPath = handlePath(cPath);
+    public void resolveController(Class clz) {
+//        cPath = handlePath(cPath);
         Method[] methods = clz.getDeclaredMethods();
         Annotation anno = clz.getAnnotation(RequestMapping.class);
         List<String> controllerPaths = null;
@@ -72,7 +72,7 @@ public class MethodMappingResolver {
             String path = cp == null || cp.equals("") ? "" : Constants.PATH_SEPERATOR + cp;
             path += Constants.PATH_SEPERATOR + handlePath(p);
             if (servletPath2Method.containsKey(path))
-                throw new RequestMappingException("路径“" + path + "”重复!");
+                throw new RequestMappingException("path \"" + path + "\" repeated!");
             servletPath2Method.put(path, mw);
         }
     }

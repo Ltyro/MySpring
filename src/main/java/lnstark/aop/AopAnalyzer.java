@@ -22,31 +22,36 @@ public class AopAnalyzer extends Analyzer{
 
 	private Map<Class<?>, PointcutImpl> a2p;// pointcut configured annotations
 
+
 	public AopAnalyzer() {
 		super();
 		pointcuts = new HashMap<>();
 		a2p = new HashMap<>();
 	}
-	
+
 	public void analyze() {
-		List<Class<?>> cl = context.getAllClass();
 		List<Object> ol = context.getAll();
-		for(Class<?> c : cl) {
-			Aspect a = c.getAnnotation(Aspect.class);
+		for(Object o : ol) {
+			Aspect a = o.getClass().getAnnotation(Aspect.class);
 			if(a != null)
-				configAspect(c);
+				configAspect(o);
 		}
 		Set<String> nameSet = context.getNameSet();
 		for(String name : nameSet) {
-			analyzeMethod(context.getBeanByName(name));
+			Object proxy = analyzeMethod(context.getBeanByName(name));
+			if(proxy != null) {
+//				context.put(context.getBeanByName(name), proxy);
+				context.addBean(name, proxy);
+			}
 		}
 		
 	}
 
 	/**
-	 * 给加了注解的类配置代理
+	 * 给存在配置了AOP注解方法的类配置代理
+	 * @return proxy 代理对象
 	 */
-	private void analyzeMethod(Object o) {
+	private Object analyzeMethod(Object o) {
 		Method[] ms = o.getClass().getDeclaredMethods();
 		boolean needProxy = false;
 		List<Method> aopMethods = new ArrayList<>();
@@ -58,25 +63,38 @@ public class AopAnalyzer extends Analyzer{
 					continue;
 				needProxy = true;
 				aopMethods.add(m);
-				m2p.add(m, a2p.get(a.getClass()));
+				m2p.add(m, a2p.get(ca));
 			}
 		}
+		Object proxy = null;
 		if(needProxy) {
-			Object proxy = proxyObject(o, m2p);
+			proxy = proxyObject(o, m2p);
 		}
+		return proxy;
 	}
 
+	/**
+	 * 采用CGLIB动态代理
+	 * @param o
+	 * @param m2p
+	 * @return
+	 */
 	private Object proxyObject(Object o, MapList<Method, PointcutImpl> m2p) {
 		Enhancer enhancer = new Enhancer();
 		enhancer.setSuperclass(o.getClass());
 		enhancer.setCallback(new MethodInterceptor() {
 			@Override
 			public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+				// execute method
 				Object object = proxy.invokeSuper(obj, args);
+				// execute after returning
 				if(m2p.containsKey(method)) {
 					List<PointcutImpl> pcis = m2p.get(method);
+					Method afterReturningMethod;
 					for(PointcutImpl pci : pcis) {
-
+						if((afterReturningMethod = pci.getAfterReturning()) != null) {
+							afterReturningMethod.invoke(pci.getAspectConfig(), new JointPoint(method));
+						}
 					}
 				}
 				return object;
@@ -90,10 +108,10 @@ public class AopAnalyzer extends Analyzer{
 	 * 解析配置类
 	 * analyze aspect config classes
 	 */
-	private void configAspect(Class<?> c) {
-		Method[] ms = c.getDeclaredMethods();
+	private void configAspect(Object o) {
+		Method[] ms = o.getClass().getDeclaredMethods();
 		for(Method m : ms) {
-			constructPointcuts(m);
+			constructPointcuts(o, m);
 		}
 		for(Method m : ms) {
 			AfterReturning ar = m.getAnnotation(AfterReturning.class);
@@ -103,8 +121,9 @@ public class AopAnalyzer extends Analyzer{
 					throw new AopException("value of AfterReturning should be like \"PointcutName()\"");
 				String pointcutName = arv.substring(0, arv.length() - 2);
 				PointcutImpl pc = pointcuts.get(pointcutName);
-//				if (pc == null)
 
+				if (pc != null)
+					pc.setAfterReturning(m);
 			}
 
 		}
@@ -113,7 +132,7 @@ public class AopAnalyzer extends Analyzer{
 	/**
 	 * construct pointcuts
 	 */
-	private void constructPointcuts(Method m) {
+	private void constructPointcuts(Object configObj, Method m) {
 		Pointcut pc = m.getAnnotation(Pointcut.class);
 		if(pc == null)
 			return;
@@ -122,18 +141,19 @@ public class AopAnalyzer extends Analyzer{
 		Matcher mat = Pattern.compile("(?<=\\()(\\S+)(?=\\))").matcher(pcv);
 		if(!mat.find())
 			return;
-		String annoPointName = mat.group();
+		String annoName = mat.group();
+		String annoPointName = m.getName();
 		if(pointcuts.containsKey(annoPointName))
 			throw new AopException("duplicated aspect annotation found: " + annoPointName);
 		Class<?> annoClz = null;
 		try {
-			annoClz = ClassUtil.getClassLoader().loadClass(annoPointName);
+			annoClz = ClassUtil.getClassLoader().loadClass(annoName);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		if(annoClz == null)
 			return;
-		PointcutImpl pci = new PointcutImpl(annoClz);
+		PointcutImpl pci = new PointcutImpl(configObj, annoClz);
 		pointcuts.put(annoPointName, pci);
 		a2p.put(annoClz, pci);
 		// TODO

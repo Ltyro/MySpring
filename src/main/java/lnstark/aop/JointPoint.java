@@ -6,6 +6,10 @@ public class JointPoint {
 	
 	private Method m;
 
+	public JointPoint(Method m) {
+		this.m = m;
+	}
+
 	public Method getM() {
 		return m;
 	}

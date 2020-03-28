@@ -1,5 +1,5 @@
 package lnstark.utils.context;
 
-public class DefaultContext<T> extends AbstractContext<T> {
+public class DefaultContext extends AbstractContext {
 
 }

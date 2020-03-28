@@ -18,6 +18,8 @@ public class RequestHandler {
 
     private Method method;
 
+//    private String handlerObjName;
+
     private RequestMapping requestMapping;
 
     public RequestHandler() {
@@ -33,8 +35,8 @@ public class RequestHandler {
         Context ctx = ContextAware.getContext();
 
         try {
-            // 从容其中获取controller
-            List beans = ctx.getBeanByType(method.getDeclaringClass());
+            // 从容器中获取controller
+            List<Object> beans = ctx.getBeanByType(method.getDeclaringClass());
             if (beans.size() == 0)
                 throw new ContextException("target bean not found");
             Object controller = beans.get(0);

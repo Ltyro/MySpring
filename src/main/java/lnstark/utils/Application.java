@@ -5,6 +5,7 @@ import lnstark.entity.Configuration;
 import lnstark.utils.context.Context;
 import lnstark.utils.context.ContextAware;
 import lnstark.utils.context.DefaultContext;
+import lnstark.utils.context.WebContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,7 +31,7 @@ public class Application {
         packageName = clz.getPackage().getName();
         this.clz = clz;
 
-        context = new DefaultContext();
+        context = new WebContext();
         ContextAware.setContext(context);
     }
 

@@ -60,47 +60,53 @@ public class ClassAnalyzer extends Analyzer {
             // load class
             analyzeClass(clazz);
         }
-        
-        // 解析aop
-        AopAnalyzer aopAnalyzer = AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
-        aopAnalyzer.analyze();
-        
+
         for (Map.Entry<Class<?>, List<Object>> entry : clzInstanceMap.entrySet()) {
             Class clz = entry.getKey();
             for (Object o : entry.getValue()) {
-                analyzeFieldMethod(clz, o);
+                analyzeFieldMethod(clz, o);// 现在就写了bean注入解析
             }
         }
+
+        // 解析controller
+        for (Object o : context.getAll()) {
+            Class<?> clz = o.getClass();//entry.getKey();
+            Controller c = clz.getAnnotation(Controller.class);
+            if(c != null)
+                MethodMappingResolver.getInstance().resolveController(clz);// 解析controller方法
+        }
+
+        // 解析AOP
+        AopAnalyzer aopAnalyzer = AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
+        aopAnalyzer.analyze();
     }
 
     /**
      * 类解析
      *
      * @param clazz
-     * @param ctx
      */
     public void analyzeClass(Class<?> clazz) {
         Annotation[] classAnnotations = clazz.getAnnotations();
         Object instance = null;
+        boolean inject = false;
+        String aValue = "";
         for (Annotation a : classAnnotations) {
             if (a instanceof Component) {
-                String aValue = ((Component) a).value();
-                String name = aValue.equals("") ? firstLetterToLower(clazz.getSimpleName()) : aValue;
-                instance = newInstance(clazz);
-                clzInstanceMap.add(clazz, instance);
-                context.addBean(name, instance);
+                aValue = ((Component) a).value();
+                inject = true;
             } else if (a instanceof Controller) {
-                String aValue = ((Controller) a).value();
-                String name = firstLetterToLower(clazz.getSimpleName());
-                MethodMappingResolver.getInstance().resolveController(clazz, aValue);// 解析controller方法
-                instance = newInstance(clazz);
-                clzInstanceMap.add(clazz, instance);
-                context.addBean(name, instance);
+                aValue = ((Controller) a).value();
+                inject = true;
             }
-
-            log.info(a);
         }
-
+        if(inject) {
+            String name = aValue.equals("") ? firstLetterToLower(clazz.getSimpleName()) : aValue;
+            instance = newInstance(clazz);
+            clzInstanceMap.add(clazz, instance);
+            context.addBean(name, instance);
+            log.info("--------------" + name + "loaded----------------");
+        }
     }
 
     /**
@@ -130,22 +136,25 @@ public class ClassAnalyzer extends Analyzer {
     public void analyzeMethod(Class<?> clazz, Object instance) {
         Method methods[] = clazz.getDeclaredMethods();
         for (Method method : methods) {
-            Annotation a = method.getAnnotation(Bean.class);
-            if (!(a instanceof Bean))
-                continue;
-            String aValue = ((Bean) a).value();
-            String name = aValue.equals("") ? method.getName() : aValue;
-            Object methodReturnBean = null;
-            try {
-                methodReturnBean = method.invoke(instance);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } finally {
-                context.addBean(name, methodReturnBean);
-            }
+            injectBeans(method, instance);// 通过bean注入
+        }
+    }
 
+    private void injectBeans(Method method, Object instance) {
+        Annotation a = method.getAnnotation(Bean.class);
+        if (!(a instanceof Bean))
+            return;
+        String aValue = ((Bean) a).value();
+        String name = aValue.equals("") ? method.getName() : aValue;
+        Object methodReturnBean = null;
+        try {
+            methodReturnBean = method.invoke(instance);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } finally {
+            context.addBean(name, methodReturnBean);
         }
     }
 

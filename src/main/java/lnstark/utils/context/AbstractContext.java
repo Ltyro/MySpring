@@ -2,7 +2,7 @@ package lnstark.utils.context;
 
 import java.util.*;
 
-public abstract class AbstractContext<T> implements Context<T> {
+public abstract class AbstractContext implements Context {
 
     private Map<String, Object> beans;
 
@@ -18,11 +18,11 @@ public abstract class AbstractContext<T> implements Context<T> {
         return beans.get(name);
     }
 
-    public List<T> getBeanByType(Class<T> clz) {
-        List<T> result = new ArrayList<T>();
+    public List<Object> getBeanByType(Class<?> clz) {
+        List<Object> result = new ArrayList<Object>();
         for (Object o : beans.values())
-            if (o.getClass() == clz)
-                result.add((T) o);
+            if (o.getClass() == clz || o.getClass().getSuperclass() == clz)// 代理类也算
+                result.add(o);
         return result;
     }
     

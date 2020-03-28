@@ -3,8 +3,8 @@ package lnstark.utils.context;
 import java.util.List;
 import java.util.Set;
 
-public interface Context<T> {
-    List<T> getBeanByType(Class<T> clz);
+public interface Context {
+    List<Object> getBeanByType(Class<?> clz);
 
     Object getBeanByName(String name);
 
