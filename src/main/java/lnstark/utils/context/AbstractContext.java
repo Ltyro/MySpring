@@ -2,10 +2,14 @@ package lnstark.utils.context;
 
 import java.util.*;
 
+import lnstark.entity.Configuration;
+
 public abstract class AbstractContext implements Context {
 
     private Map<String, Object> beans;
 
+    private Configuration config;
+    
     public AbstractContext() {
         beans = new HashMap<>();
     }
@@ -42,4 +46,12 @@ public abstract class AbstractContext implements Context {
     public Set<String> getNameSet() {
         return beans.keySet();
     }
+
+	public Configuration getConfig() {
+		return config;
+	}
+
+	public void setConfig(Configuration config) {
+		this.config = config;
+	}
 }

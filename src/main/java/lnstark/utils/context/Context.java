@@ -3,6 +3,8 @@ package lnstark.utils.context;
 import java.util.List;
 import java.util.Set;
 
+import lnstark.entity.Configuration;
+
 public interface Context {
     List<Object> getBeanByType(Class<?> clz);
 
@@ -16,4 +18,7 @@ public interface Context {
 
     Set<String> getNameSet();
 
+    Configuration getConfig();
+    
+    void setConfig(Configuration config);
 }

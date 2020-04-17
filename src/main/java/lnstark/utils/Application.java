@@ -20,19 +20,19 @@ public class Application {
 
     private Class clz = null;
 
-    private Configuration config;
-
     private Application(Class<?> clz) {
         // 扫描包的路径
         path = clz.getResource("").getFile();
         path = path.replaceAll("%20", " ");// 替换空格
-        config = new ConfigurationResolver();
+        Configuration config = new ConfigurationResolver();
 
         packageName = clz.getPackage().getName();
         this.clz = clz;
 
         context = new WebContext();
+        context.setConfig(config);
         ContextAware.setContext(context);
+        
     }
 
     public Context run() {
@@ -45,8 +45,9 @@ public class Application {
     }
 
     private void startServer() {
-
+    	
         TomcatServer server = (TomcatServer) context.getBeanByName("tomcatServer");
+        Configuration config = context.getConfig();
         server.setContextPath(config.getServletPath());
         server.setPort(config.getPort());
         server.start();

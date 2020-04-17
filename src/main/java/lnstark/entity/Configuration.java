@@ -6,6 +6,8 @@ public class Configuration {
 
     private String servletPath = "/defaultPath";
 
+    private boolean enableSchedule = false;
+    
     public Configuration() {
     }
 
@@ -24,4 +26,12 @@ public class Configuration {
     public void setServletPath(String servletPath) {
         this.servletPath = servletPath;
     }
+
+	public boolean isEnableSchedule() {
+		return enableSchedule;
+	}
+
+	public void setEnableSchedule(boolean enableSchedule) {
+		this.enableSchedule = enableSchedule;
+	}
 }
