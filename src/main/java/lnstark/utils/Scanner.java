@@ -1,13 +1,9 @@
 package lnstark.utils;
 
-import lnstark.annotations.Bean;
-import lnstark.annotations.Component;
+import lnstark.aop.AopAnalyzer;
+import lnstark.schedule.ScheduleAnalyzer;
 
 import java.io.File;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +31,17 @@ public class Scanner {
     public void scanBeans(String basePath, String packageName) {
 
         scanFiles(basePath, packageName);
-        AnalyzerFactory.getAnalyzer(ClassAnalyzer.class).loadClasses(classNames);
+        BeanAnalyzer beanAnalyzer = AnalyzerFactory.getAnalyzer(BeanAnalyzer.class);
+        beanAnalyzer.setClassNames(classNames);
+        beanAnalyzer.analyze();
 
+        // analyze AOP
+        AopAnalyzer aopAnalyzer = AnalyzerFactory.getAnalyzer(AopAnalyzer.class);
+        aopAnalyzer.analyze();
+
+        // analyze schedule
+        ScheduleAnalyzer scheduleAnalyzer = AnalyzerFactory.getAnalyzer(ScheduleAnalyzer.class);
+        scheduleAnalyzer.analyze();
     }
 
     public void scanFiles(String basePath, String packagePath) {

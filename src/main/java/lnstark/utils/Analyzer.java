@@ -18,5 +18,6 @@ public abstract class Analyzer {
 	public void setContext(Context context) {
 		this.context = context;
 	}
-	
+
+	protected abstract void analyze();
 }

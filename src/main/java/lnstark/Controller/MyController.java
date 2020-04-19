@@ -23,4 +23,9 @@ public class MyController {
         return "hello, flyer " + p1 + " " + p2;
     }
 
+    @RequestMapping(value = {"pps/os"})
+    public String helloGirl() {
+        return "hello, traveler";
+    }
+
 }
