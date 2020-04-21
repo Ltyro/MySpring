@@ -9,8 +9,12 @@ import lnstark.utils.StringUtil;
 import lnstark.utils.context.Context;
 import lnstark.utils.context.ContextAware;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ScheduleAnalyzer extends Analyzer {
 
@@ -41,7 +45,8 @@ public class ScheduleAnalyzer extends Analyzer {
 
     private void analyzeSchedule(Object o) {
         Method[] ms = o.getClass().getDeclaredMethods();
-        int sec, min, hour, day, month, weekDay;
+        int sec = 0, min = 0, hour = 0, day = 0, month = 0, weekday = 0;
+
         for (Method m : ms) {
             Scheduled sa = m.getAnnotation(Scheduled.class);
             if (sa == null)
@@ -92,7 +97,45 @@ public class ScheduleAnalyzer extends Analyzer {
                 if (month > 12)
                     throw new ScheduleException("month should not more than 12");
             }
+
+            // week
+            String weekdayStr = times[5];
+            if (StringUtil.isNumberOnly(weekdayStr)) {
+                weekday = Integer.parseInt(weekdayStr);
+                if (weekday > 7)
+                    throw new ScheduleException("weekday should not more than 7");
+            }
+
+            int timeArr[] = {sec, min, hour, day, month, weekday};
+            executeSchedule(timeArr, m, o);
         }
+    }
+
+    private void executeSchedule(int[] timeArr, Method m, Object o ) {
+        if(timeArr == null || timeArr.length != 6)
+            return;
+        Timer t = new Timer();
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.SECOND, timeArr[0]);
+        c.set(Calendar.MINUTE, timeArr[1]);
+        c.set(Calendar.HOUR_OF_DAY, timeArr[2]);
+        c.set(Calendar.DATE, timeArr[3]);
+        c.set(Calendar.MONTH, timeArr[4] - 1);
+        c.set(Calendar.DAY_OF_WEEK, (timeArr[5] + 1) % 7);
+        System.out.println(c.getTime());
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    m.invoke(o);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                t.cancel();
+            }
+        }, c.getTime());
     }
 
     public static void main(String[] args) {
