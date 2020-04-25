@@ -4,6 +4,8 @@ import lnstark.entity.Configuration;
 import lnstark.exception.ScheduleException;
 import lnstark.schedule.annos.EnableScheduling;
 import lnstark.schedule.annos.Scheduled;
+import lnstark.schedule.entity.Time;
+import lnstark.schedule.entity.TimeType;
 import lnstark.utils.Analyzer;
 import lnstark.utils.StringUtil;
 import lnstark.utils.context.Context;
@@ -45,14 +47,19 @@ public class ScheduleAnalyzer extends Analyzer {
 
     private void analyzeSchedule(Object o) {
         Method[] ms = o.getClass().getDeclaredMethods();
-        int sec = 0, min = 0, hour = 0, day = 0, month = 0, weekday = 0;
-
+//        int sec = 0, min = 0, hour = 0, day = 0, month = 0, weekday = 0;
+        Time sec = new Time(0, false, TimeType.Second),
+                min = new Time(0, false, TimeType.Minute),
+                hour = new Time(0, false, TimeType.Hour),
+                day = new Time(0, false, TimeType.Day),
+                month = new Time(0, false, TimeType.Month),
+                weekday = new Time(0, false, TimeType.Week);
         for (Method m : ms) {
             Scheduled sa = m.getAnnotation(Scheduled.class);
             if (sa == null)
                 continue;
             String cron = sa.cron();
-            if (cron == null)
+            if (StringUtil.isEmpty(cron))
                 throw new NullPointerException("cron expression should not be null");
             String[] times = cron.split(" ");
             if (times.length != 6)
@@ -60,69 +67,49 @@ public class ScheduleAnalyzer extends Analyzer {
 
             // second
             String secStr = times[0];
-            if (StringUtil.isNumberOnly(secStr)) {
-                sec = Integer.parseInt(secStr);
-                if (sec > 60)
-                    throw new ScheduleException("second should not more than 60");
-            }
+            sec.setExpression(secStr);
 
             // minute
             String minuteStr = times[1];
-            if (StringUtil.isNumberOnly(minuteStr)) {
-                min = Integer.parseInt(minuteStr);
-                if (min > 60)
-                    throw new ScheduleException("minute should not more than 60");
-            }
+            min.setExpression(minuteStr);
 
             // hour
             String hourStr = times[2];
-            if (StringUtil.isNumberOnly(hourStr)) {
-                hour = Integer.parseInt(hourStr);
-                if (hour > 23)
-                    throw new ScheduleException("minute should not more than 23");
-            }
+            hour.setExpression(hourStr);
 
             // day
             String dayStr = times[3];
-            if (StringUtil.isNumberOnly(dayStr)) {
-                day = Integer.parseInt(dayStr);
-                if (day > 31)
-                    throw new ScheduleException("day should not more than 31");
-            }
+            day.setExpression(dayStr);
 
             // month
             String monthStr = times[4];
-            if (StringUtil.isNumberOnly(monthStr)) {
-                month = Integer.parseInt(monthStr);
-                if (month > 12)
-                    throw new ScheduleException("month should not more than 12");
-            }
+            month.setExpression(monthStr);
 
             // week
             String weekdayStr = times[5];
-            if (StringUtil.isNumberOnly(weekdayStr)) {
-                weekday = Integer.parseInt(weekdayStr);
-                if (weekday > 7)
-                    throw new ScheduleException("weekday should not more than 7");
-            }
+            weekday.setExpression(weekdayStr);
 
-            int timeArr[] = {sec, min, hour, day, month, weekday};
+            Time timeArr[] = {sec, min, hour, day, month, weekday};
             executeSchedule(timeArr, m, o);
         }
     }
 
-    private void executeSchedule(int[] timeArr, Method m, Object o ) {
+    private void executeSchedule(Time[] timeArr, Method m, Object o) {
         if(timeArr == null || timeArr.length != 6)
             return;
+        boolean always = true;
         Timer t = new Timer();
+
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.SECOND, timeArr[0]);
-        c.set(Calendar.MINUTE, timeArr[1]);
-        c.set(Calendar.HOUR_OF_DAY, timeArr[2]);
-        c.set(Calendar.DATE, timeArr[3]);
-        c.set(Calendar.MONTH, timeArr[4] - 1);
-        c.set(Calendar.DAY_OF_WEEK, (timeArr[5] + 1) % 7);
+        c.setTimeInMillis(0);
+        c.set(Calendar.SECOND, timeArr[0].getValue());
+        c.set(Calendar.MINUTE, timeArr[1].getValue());
+        c.set(Calendar.HOUR_OF_DAY, timeArr[2].getValue());
+        c.set(Calendar.DATE, timeArr[3].getValue());
+        c.set(Calendar.MONTH, timeArr[4].getValue() - 1);
+        c.set(Calendar.DAY_OF_WEEK, (timeArr[5].getValue() + 1) % 7);
         System.out.println(c.getTime());
+
         t.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -136,6 +123,7 @@ public class ScheduleAnalyzer extends Analyzer {
                 t.cancel();
             }
         }, c.getTime());
+
     }
 
     public static void main(String[] args) {
