@@ -1,3 +1,3 @@
 # MySpring
 
-learning spring
+learning spring by realizing it.
