@@ -17,7 +17,7 @@ import java.util.TimerTask;
 @Component
 public class MySchedule {
 
-    @Scheduled(cron="* 23 19 25 4 2")
+    @Scheduled(cron="* 5 15 26 4 *")
     public void testSchedule() {
         System.out.println("dida");
     }
