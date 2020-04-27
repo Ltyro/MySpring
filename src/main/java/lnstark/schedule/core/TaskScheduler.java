@@ -31,7 +31,13 @@ public class TaskScheduler implements Runnable{
 
     private BitSet[] timeFields;
 
-    private boolean end = false;
+    private Method method;
+    
+    private Object target;
+    
+    private Scheduled schedule;
+    
+    private boolean start = false, end = false;
 
     private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 
@@ -39,20 +45,19 @@ public class TaskScheduler implements Runnable{
 
     private final String STAR = "*";
 
-    public TaskScheduler() {
+    public TaskScheduler(Method m, Object o, Scheduled sa) {
         timeFields = new BitSet[]{seconds, minutes, hours, daysOfMonth, months, daysOfWeek};
-    }
-
-    public void execute(Scheduled sa, Method m, Object o) {
-        // int sec = 0, min = 0, hour = 0, day = 0, month = 0, weekday = 0;
-        Time sec = new Time(0, false, TimeType.Second), min = new Time(0, false, TimeType.Minute),
-                hour = new Time(0, false, TimeType.Hour), day = new Time(1, false, TimeType.Day),
-                month = new Time(0, false, TimeType.Month), weekday = new Time(0, false, TimeType.Week);
-        if (sa == null)
-            return;
+        this.method = m;
+        this.target = o;
+        this.schedule = sa;
+        
         String cron = sa.cron();
         if (StringUtil.isEmpty(cron))
             throw new NullPointerException("cron expression should not be null");
+     // int sec = 0, min = 0, hour = 0, day = 0, month = 0, weekday = 0;
+//      Time sec = new Time(0, false, TimeType.Second), min = new Time(0, false, TimeType.Minute),
+//              hour = new Time(0, false, TimeType.Hour), day = new Time(1, false, TimeType.Day),
+//              month = new Time(0, false, TimeType.Month), weekday = new Time(0, false, TimeType.Week);
         String[] times = cron.split(" ");
         if (times.length != 6)
             throw new ScheduleException(ERROR_EXPRESSION);
@@ -60,15 +65,25 @@ public class TaskScheduler implements Runnable{
         for (int i = 0; i < times.length; i++) {
             setTimeField(times[i], timeFields[i]);
         }
+    }
+
+    public void execute() {
+        
         // execute first time
-        long firstTime = getFirstTimeFromBitSets();
-        long delay = firstTime - System.currentTimeMillis();
-        if (delay < 0)
-            delay = getNextTime() - System.currentTimeMillis();
+        long delay = 0;
+        Calendar c = Calendar.getInstance();
+        if (!start) {
+        	long firstTime = getFirstTimeFromBitSets();
+        	delay = firstTime - System.currentTimeMillis();
+        	if(delay < 0)
+        		delay = getNextTime(c) - System.currentTimeMillis();
+        	start = true;
+        } else {
+        	delay = getNextTime(c) - System.currentTimeMillis();
+        }
+        if (end)
+        	return;
         executor.schedule(this, delay, TimeUnit.MILLISECONDS);
-//        seconds.nextSetBit()
-        Time timeArr[] = { sec, min, hour, day, month, weekday };
-        executeSchedule(timeArr, m, o);
     }
 
     private void setTimeField(String time, BitSet timeField) {
@@ -95,8 +110,72 @@ public class TaskScheduler implements Runnable{
         }
     }
 
-    private long getNextTime() {
-        // TODO
+    /**
+     * get next execution time
+     * @param calendar 
+     */
+    private long getNextTime(Calendar c) {
+    	c.set(Calendar.MILLISECOND, 0);
+    	
+    	// second
+    	int sec = c.get(Calendar.SECOND);
+        int nextSec = seconds.nextSetBit(sec + 1);
+        if(nextSec == -1) {
+        	nextSec = seconds.nextSetBit(0);
+        } else {
+        	c.set(Calendar.SECOND, nextSec);
+        	return c.getTimeInMillis();
+        }
+        
+        // minute
+        int min = c.get(Calendar.MINUTE);
+        int nextMin = minutes.nextSetBit(min + 1);
+        if(nextMin == -1) {
+        	nextMin = minutes.nextSetBit(0);
+        } else {
+        	c.set(Calendar.MINUTE, nextMin);
+        	return c.getTimeInMillis();
+        }
+        
+        // hour
+        int h = c.get(Calendar.HOUR);
+        int nextH = minutes.nextSetBit(h + 1);
+        if(nextH == -1) {
+        	nextH = minutes.nextSetBit(0);
+        } else {
+        	c.set(Calendar.HOUR, nextH);
+        	return c.getTimeInMillis();
+        }
+        
+        // day of month
+        int d = c.get(Calendar.DAY_OF_MONTH);
+        int nextDay = daysOfMonth.nextSetBit(d);
+        if(nextDay == -1) {
+        	nextDay = daysOfMonth.nextSetBit(0);
+        } else {
+        	c.set(Calendar.DAY_OF_MONTH, nextDay);
+        	return c.getTimeInMillis();
+        }
+
+        // month
+        int mon = c.get(Calendar.MONTH);
+        int nextMon = daysOfMonth.nextSetBit(mon + 1);
+        if(nextMon == -1) {
+        	nextMon = daysOfMonth.nextSetBit(0);
+        } else {
+        	c.set(Calendar.MONTH, nextMon);
+        	return c.getTimeInMillis();
+        }
+        
+        // day of week
+        int dow = c.get(Calendar.DAY_OF_WEEK);
+        int nextDow = daysOfMonth.nextSetBit(dow + 1);
+        if(nextDow == -1) {
+        	nextDow = daysOfMonth.nextSetBit(0);
+        } else {
+        	c.set(Calendar.DAY_OF_WEEK, nextDow);
+        	return c.getTimeInMillis();
+        }
         return 0;
     }
 
@@ -113,7 +192,7 @@ public class TaskScheduler implements Runnable{
     }
 
     // 参考CronSequenceGenerator
-    private void executeSchedule(Time[] timeArr, Method m, Object o) {
+    private void executeSchedule(Time[] timeArr) {
         if (timeArr == null || timeArr.length != 6)
             return;
         boolean once = true, // 只执行一次
@@ -156,9 +235,9 @@ public class TaskScheduler implements Runnable{
 
     }
 
-    private void invokeMethod(Method m, Object o) {
+    private void invokeMethod() {
         try {
-            m.invoke(o);
+            method.invoke(target);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -168,6 +247,7 @@ public class TaskScheduler implements Runnable{
 
     @Override
     public void run() {
-
+    	invokeMethod();
+    	execute();
     }
 }

@@ -44,8 +44,9 @@ public class ScheduleAnalyzer extends Analyzer {
 		for (Method m : ms) {
 			Scheduled sa = m.getAnnotation(Scheduled.class);
 
-
-			new TaskScheduler().execute(sa, m, o);
+			if (sa == null)
+				continue;
+			new TaskScheduler(m, o, sa).execute();
 
 		}
 	}
