@@ -16,7 +16,8 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A cron expression parser and task executor
+ * A CRON expression parser and task executor
+ * Reference from #{CronSequenceGenerator}
  */
 public class TaskScheduler implements Runnable{
 
@@ -54,6 +55,9 @@ public class TaskScheduler implements Runnable{
             Calendar.SECOND, Calendar.MINUTE, Calendar.HOUR,
             Calendar.DAY_OF_MONTH, Calendar.MONTH, Calendar.DAY_OF_WEEK
         };
+        int timeLengths[] = new int[] {
+        	60, 60, 60, 31, 12, 7
+        };
         this.method = m;
         this.target = o;
         this.schedule = sa;
@@ -70,7 +74,7 @@ public class TaskScheduler implements Runnable{
             throw new ScheduleException(ERROR_EXPRESSION);
 
         for (int i = 0; i < times.length; i++) {
-            setTimeField(times[i], timeFields[i], timeTypes[i]);
+            setTimeField(times[i], timeFields[i], timeTypes[i], timeLengths[i]);
         }
     }
 
@@ -80,7 +84,7 @@ public class TaskScheduler implements Runnable{
         long delay = 0;
         Calendar c = Calendar.getInstance();
         if (!start) {
-        	long firstTime = getFirstTimeFromBitSets();
+        	long firstTime = getFirstTimeFromBitSets(Calendar.getInstance());
         	delay = firstTime - System.currentTimeMillis();
         	if(delay < 0)
         		delay = getNextTime(c) - System.currentTimeMillis();
@@ -93,10 +97,10 @@ public class TaskScheduler implements Runnable{
         executor.schedule(this, delay, TimeUnit.MILLISECONDS);
     }
 
-    private void setTimeField(String time, BitSet timeField, int type) {
+    private void setTimeField(String time, BitSet timeField, int type, int timeLength) {
 
         if (STAR.equals(time) || QUESMARK.equals(time)) {
-            timeField.set(0, timeField.size());
+            timeField.set(0, timeLength);
             return;
         }
 
@@ -110,7 +114,7 @@ public class TaskScheduler implements Runnable{
             String[] strs = time.split("-");
             int start = getTimeValue(strs[0], type),
                     end = getTimeValue(strs[1], type);
-            setPeriodTimeField(timeField, start, end, 1);
+            setPeriodTimeField(timeField, start, end, 1, timeLength);
             return;
         }
 
@@ -125,7 +129,7 @@ public class TaskScheduler implements Runnable{
 
         if (time.contains("/")) {
             String[] strs = time.split("/");
-            int start = 0, end = time.length() - 1;
+            int start = 0, end = timeLength - 1;
             if (strs[0].contains("-")) {
                 String be[] = strs[0].split("-");
                 start = getTimeValue(be[0], type);
@@ -133,13 +137,13 @@ public class TaskScheduler implements Runnable{
             }
 
             int period = Integer.parseInt(strs[1]);
-            setPeriodTimeField(timeField, start, end, period);
+            setPeriodTimeField(timeField, start, end, period, timeLength);
             return;
         }
 
     }
 
-    private void setPeriodTimeField(BitSet timeField, int start, int end, int period) {
+    private void setPeriodTimeField(BitSet timeField, int start, int end, int period, int timeLength) {
         if(start == end) {
             timeField.set(start);
             return;
@@ -149,8 +153,8 @@ public class TaskScheduler implements Runnable{
                 timeField.set(i);
             }
         } else {
-            for (int i = start; i <= end + timeField.length(); i += period) {
-                timeField.set(i % timeField.length());
+            for (int i = start; i <= end + timeLength; i += period) {
+                timeField.set(i % timeLength);
             }
         }
     }
@@ -205,53 +209,23 @@ public class TaskScheduler implements Runnable{
         }
 
         nextDay(c);
-//        // day of month
-//        int d = c.get(Calendar.DAY_OF_MONTH);
-//        int nextDay = daysOfMonth.nextSetBit(d);
-//
-//        if (nextDay == -1) {
-//        	nextDay = daysOfMonth.nextSetBit(0);
-//        } else {
-//        	c.set(Calendar.DAY_OF_MONTH, nextDay);
-//        	return c.getTimeInMillis();
-//        }
-//
-//        // month
-//        int mon = c.get(Calendar.MONTH);
-//        int nextMon = daysOfMonth.nextSetBit(mon + 1);
-//        if (nextMon == -1) {
-//            c.add(Calendar.YEAR, 1);// next year
-//        	nextMon = daysOfMonth.nextSetBit(0);
-//        } else {
-//        	c.set(Calendar.MONTH, nextMon);
-//        	return c.getTimeInMillis();
-//        }
-//
-//        // day of week
-//        int dow = c.get(Calendar.DAY_OF_WEEK);
-//        int nextDow = daysOfMonth.nextSetBit(dow + 1);
-//        if (nextDow == -1) {
-//        	nextDow = daysOfMonth.nextSetBit(0);
-//        } else {
-//        	c.set(Calendar.DAY_OF_WEEK, nextDow);
-//        	return c.getTimeInMillis();
-//        }
 
-        return 0;
+        return c.getTimeInMillis();
     }
 
     // day
     private void nextDay(Calendar c) {
         int d = c.get(Calendar.DAY_OF_MONTH);
         int nextDay = daysOfMonth.nextSetBit(d);
-        // TODO
+        
         if (nextDay == -1) {
             nextDay = daysOfMonth.nextSetBit(0);
             c.set(Calendar.DAY_OF_MONTH, nextDay);
             nextMonth(c);
-        } else {
-
         }
+        
+    	if (!fitDayOfWeek(c))
+        	nextDay(c);
     }
 
     // month
@@ -272,19 +246,37 @@ public class TaskScheduler implements Runnable{
         return daysOfWeek.get(dow - 1);
     }
 
-    private long getFirstTimeFromBitSets() {
-        Calendar c = Calendar.getInstance();
+    private long getFirstTimeFromBitSets(Calendar c) {
         c.set(Calendar.MILLISECOND, 0);
-        c.set(Calendar.SECOND, seconds.nextSetBit(0));
-        c.set(Calendar.MINUTE, minutes.nextSetBit(0));
-        c.set(Calendar.HOUR_OF_DAY, hours.nextSetBit(0));
-        c.set(Calendar.DAY_OF_MONTH, daysOfMonth.nextSetBit(0) + 1);
-        c.set(Calendar.MONTH, months.nextSetBit(0));
-        c.set(Calendar.DAY_OF_WEEK, daysOfWeek.nextSetBit(0));
-        return c.getTime().getTime();
+        int second = c.get(Calendar.SECOND);
+        while (!seconds.get(second)) {
+        	c.add(Calendar.SECOND, 1);
+        	second = c.get(Calendar.SECOND);
+        }
+        
+        int min = c.get(Calendar.MINUTE);
+        while (!minutes.get(min)) {
+        	c.add(Calendar.MINUTE, 1);
+        	min = c.get(Calendar.MINUTE);
+        }
+        
+        int h = c.get(Calendar.HOUR_OF_DAY);
+        while (!hours.get(h)) {
+        	c.add(Calendar.HOUR_OF_DAY, 1);
+        	h = c.get(Calendar.HOUR_OF_DAY);
+        }
+        
+        int d = c.get(Calendar.DAY_OF_MONTH);
+        
+//        c.set(Calendar.MINUTE, minutes.nextSetBit(0));
+//        c.set(Calendar.HOUR_OF_DAY, hours.nextSetBit(0));
+//        c.set(Calendar.DAY_OF_MONTH, daysOfMonth.nextSetBit(0) + 1);
+//        c.set(Calendar.MONTH, months.nextSetBit(0));
+//        c.set(Calendar.DAY_OF_WEEK, daysOfWeek.nextSetBit(0));
+        return c.getTimeInMillis();
     }
 
-    // 参考CronSequenceGenerator
+    
     private void executeSchedule(Time[] timeArr) {
         if (timeArr == null || timeArr.length != 6)
             return;
