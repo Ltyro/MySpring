@@ -159,7 +159,7 @@ public class TaskScheduler implements Runnable {
      */
     private long getNextTime(Calendar c) {
     	c.set(Calendar.MILLISECOND, 0);
-    	boolean resetSec = false, resetMin = false, resetHour = false;
+    	boolean resetSec = false, resetMin = false;
         int second = c.get(Calendar.SECOND);
         while (!seconds.get(second)) {
         	c.add(Calendar.SECOND, 1);
@@ -191,10 +191,11 @@ public class TaskScheduler implements Runnable {
         return c.getTimeInMillis();
     }
 
-    // day
+    // day of month, month, day of week
     private void nextDay(Calendar c) {
+    	
     	boolean resetHour = false;
-        
+    	
         while (!daysOfMonth.get(c.get(Calendar.DAY_OF_MONTH) - 1) ||
         		!months.get(c.get(Calendar.MONTH)) ||
         		!daysOfWeek.get(c.get(Calendar.DAY_OF_WEEK) - 1)) {
@@ -203,33 +204,8 @@ public class TaskScheduler implements Runnable {
         		c.set(Calendar.HOUR_OF_DAY, hours.nextSetBit(0));
         		resetHour = true;
         	}
-//            nextMonth(c);
         }
         
-//    	if (!fitDayOfWeek(c))
-//        	nextDay(c);
-    }
-
-    // month
-    private void nextMonth(Calendar c) {
-
-        int mon = c.get(Calendar.MONTH);
-        int nextMon = months.nextSetBit(mon + 1);
-        if (nextMon == -1) {
-            c.add(Calendar.YEAR, 1);// next year
-        	nextMon = months.nextSetBit(0);
-        }
-        c.set(Calendar.MONTH, nextMon);
-
-    }
-
-    private boolean fitMonth(Calendar c) {
-        return months.get(c.get(Calendar.MONTH) - 1);
-    }
-    
-    private boolean fitDayOfWeek(Calendar c) {
-        int dow = c.get(Calendar.DAY_OF_WEEK);
-        return daysOfWeek.get(dow - 1);
     }
 
     private void invokeMethod() {
