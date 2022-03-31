@@ -11,7 +11,7 @@
 	
 	<properties>
 		<spring.version>5.1.6.RELEASE</spring.version>
-		<springboot.version>2.1.5.RELEASE</springboot.version>
+		<springboot.version>2.5.12</springboot.version>
 	</properties>
 	<dependencies>
 		<!--<dependency> <groupId>org.springframework</groupId> <artifactId>spring-core</artifactId> 
